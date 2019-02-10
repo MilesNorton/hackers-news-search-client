@@ -1,6 +1,6 @@
-FROM node:latest
+FROM node:10.15.1-alpine
 # set working directory
-RUN mkdir /usr/src/app
+RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 # add `/usr/src/app/node_modules/.bin` to $PATH
 ENV PATH /usr/src/app/node_modules/.bin:$PATH

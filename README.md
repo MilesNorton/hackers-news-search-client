@@ -1,7 +1,8 @@
 # Local Instructions
 
-1. npm run start
-2. Go to `localhost:3000`
+1. npm install
+2. npm run start
+3. Go to `localhost:3000`
 
 # Local Docker Instructions
 

@@ -24,7 +24,4 @@ export interface ISearchResult {
   story_url: null;
   title: string;
   url: string;
-  _highlightResult: any;
-  _tags: [string];
-  __proto__: any;
 }

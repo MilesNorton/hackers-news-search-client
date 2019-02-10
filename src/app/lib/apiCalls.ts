@@ -13,12 +13,13 @@ export const buildQuery = (
   queriesSeparator: string,
   additionalQuerySeparator: string
 ): string => {
-  let combinedUrl: string = "";
-  queries.map(([key, value]: [string, string], index: number) => {
-    combinedUrl +=
-      index > 0
+  return queries
+    .map(([key, value]: [string, string], index: number) => {
+      return index > 0
         ? additionalQuerySeparator + key + queriesSeparator + value
         : key + queriesSeparator + value;
-  });
-  return searchUrl + combinedUrl;
+    })
+    .reduce((previousString: string, currentString: string) => {
+      return previousString + currentString;
+    }, searchUrl);
 };

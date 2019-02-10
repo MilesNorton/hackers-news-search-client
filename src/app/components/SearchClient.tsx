@@ -1,10 +1,8 @@
 import * as React from "react";
-import { ISearchResults, ISearchResult } from "../lib/interface";
+import { ISearchResults } from "../lib/interface";
 import {
-  Loader,
   Segment,
   Grid,
-  Card,
   Icon,
   Input,
   Divider,
@@ -14,6 +12,8 @@ import {
 import { buildQuery } from "../lib/apiCalls";
 import { fetchResults } from "../actions/queryActions";
 import { connect } from "react-redux";
+import SearchResult from "./SearchResult";
+import FailedResult from "./FailedResult";
 
 interface IProps {
   results: ISearchResults;
@@ -73,31 +73,12 @@ class SearchClient extends React.Component<IProps, IState> {
   render() {
     const { searchTerm, totalPages } = this.state;
     const { results, activePage } = this.props;
-
     const queriedResults =
-      searchTerm !== "" && results ? (
-        results.hits.map((hit: ISearchResult, id: number) => (
-          <Card id={id} loading fluid className="result-container">
-            <Card.Content>
-              <Card.Header loading>
-                <a href={hit.url}>{hit.title}</a>
-              </Card.Header>
-              <Card.Meta>
-                {new Date(hit.created_at_i).toLocaleDateString("en-au")}
-              </Card.Meta>
-              <Card.Description>Author: {hit.author}</Card.Description>
-              <Card.Description>{hit.url}</Card.Description>
-              <Card.Content extra>
-                <a href={hit.url}>Comments({hit.num_comments || "0"})</a>
-              </Card.Content>
-            </Card.Content>
-          </Card>
-        ))
-      ) : (
-        <Container textAlign="center" className="result-container-no-results">
-          Please search something.
-        </Container>
-      );
+      searchTerm !== "" && results
+        ? results.hits && results.hits.length > 0
+          ? results.hits.map(SearchResult)
+          : FailedResult("No Results. Please try again.")
+        : FailedResult("Please search something.");
     const pagination = (
       <Pagination
         ellipsisItem={null}
@@ -122,7 +103,6 @@ class SearchClient extends React.Component<IProps, IState> {
               placeholder="Search..."
             />
             <Divider />
-
             <Segment.Group id="results-container">
               {queriedResults}
             </Segment.Group>
