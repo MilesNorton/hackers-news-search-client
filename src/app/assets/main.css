@@ -1,0 +1,29 @@
+.search-client-outer-container {
+    width: 100vw !important;
+    height: 100vh !important;
+}
+
+.search-client-outer-grid {
+    height: 100% !important;
+}
+
+.search-client-inner-grid {
+    max-height: 80vh !important;
+    max-width: 550px !important;
+    text-align: left !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+}
+
+.results-container {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+}
+
+.result-container {
+    margin: 0 !important;
+    overflow-wrap: break-word !important;
+}
+
+.result-container-no-results {
+    margin: 5rem !important;
+}
