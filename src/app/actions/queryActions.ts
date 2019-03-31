@@ -1,13 +1,19 @@
 import { FOUND_DATA } from "./index";
 import { ISearchResults } from "../lib/interface";
-
-export /**
+import { Dispatch } from "redux";
+export interface dispatchInterface {
+  type: string;
+  payload: ISearchResults | undefined;
+}
+/**
  * Query the url passed in and return a payload with the results to the reducers
  *
  * @param {string} url
  */
-const fetchResults = (url: string) => dispatch => {
-  fetch(url)
+export const fetchResults = (url: string) => (
+  dispatch: Dispatch<dispatchInterface>
+): Promise<dispatchInterface> => {
+  return fetch(url)
     .then(response => response.json())
     .then((results: ISearchResults) => {
       return dispatch({

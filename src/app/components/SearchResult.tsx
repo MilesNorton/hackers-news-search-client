@@ -2,7 +2,7 @@ import * as React from "react";
 import { Card } from "semantic-ui-react";
 import { ISearchResult } from "../lib/interface";
 
-const SearchResult = (hit: ISearchResult, id: number) => (
+const SearchResult = (hit: ISearchResult, id: number): JSX.Element => (
   <Card id={id} loading fluid className="result-container">
     <Card.Content>
       <Card.Header loading>

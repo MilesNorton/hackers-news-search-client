@@ -1,3 +1,5 @@
+import { dispatchInterface } from "../actions/queryActions";
+
 /**
  * build a query string
  *TODO: split the searchURL to baseURL and searchQuery
@@ -22,4 +24,25 @@ export const buildQuery = (
     .reduce((previousString: string, currentString: string) => {
       return previousString + currentString;
     }, searchUrl);
+};
+
+export const fetchData = (
+  url: string,
+  maxHitsPerPage: number,
+  searchTerm: string,
+  currentPage: number,
+  fetchedResults: (url: string) => Promise<dispatchInterface>
+) => {
+  fetchedResults(
+    buildQuery(
+      url,
+      [
+        ["query", searchTerm],
+        ["hitsPerPage", maxHitsPerPage.toString()],
+        ["page", (currentPage - 1).toString()]
+      ],
+      "=",
+      "&"
+    )
+  );
 };
