@@ -7,10 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "./node_modules/.bin/webpack",
     "start": "npm run build && node server.js",
-    "docker-local": "docker-compose up -d --build",
-    "docker-local-build": "docker build -t abx-exercise .",
-    "docker-local-run": "docker run -p 3000:3000 abx-exercise",
-    "docker-local1": "npm run docker-local-build && npm run docker-local-run"
+    "docker-local-build": "docker build -t  abx-exercise .",
+    "docker-local-run": "docker run -t -d -p 80:80 abx-exercise",
+    "docker-local": "npm run docker-local-build && npm run docker-local-run",
+    "rimraf": "rimraf"
   },
   "keywords": [],
   "author": "",
@@ -32,6 +32,7 @@
     "@types/react-redux": "^7.0.6",
     "css-loader": "^2.1.0",
     "html-webpack-plugin": "^3.2.0",
+    "rimraf": "^2.6.3",
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
     "ts-loader": "^4.5.0",

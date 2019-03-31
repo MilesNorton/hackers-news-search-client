@@ -1,7 +1,0 @@
-version: "2.1"
-services:
-  react-service:
-    container_name: react-service
-    build: ./
-    ports:
-      - "8080:3000"
