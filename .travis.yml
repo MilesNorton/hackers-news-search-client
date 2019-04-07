@@ -1,9 +1,12 @@
 dist: xenial
-language: python # need python for aws
-python:
-  - "2.7"
-node_js:
-  '11'
+matrix:
+  include:
+  - language: python # need python for aws
+    python:
+      - "2.7"
+  - language: node_js # need python for aws
+    node_js:
+      '11'
 services:
   docker
 env:
@@ -16,11 +19,13 @@ env:
 cache:
   directories:
     - "node_modules"
-jobs:  
+pre_install:
+jobs: 
   include:   
     - stage: "Test"
       node_js: 
         '11'
+      
       script: npm run test  
     - stage: "Build"
       node_js: 
@@ -34,7 +39,7 @@ jobs:
         export PATH=$PATH:$HOME/.local/bin &&
         npm run docker-local-build-travis &&
         bash deploy.sh
-  
+    
 
 
 
