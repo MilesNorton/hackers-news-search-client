@@ -25,12 +25,12 @@ jobs:
     - stage: "Deploy To ECR"
       node_js:
         '11'
-    - script: npm install awscli
-    - script: export PATH=$PATH:$HOME/.local/bin
-    - script: npm run docker-local-build-travis
-    - script: bash deploy.sh
-      on:
-          branch: master
+      script: >-
+        npm install awscli &&
+        export PATH=$PATH:$HOME/.local/bin &&
+        npm run docker-local-build-travis &&
+        bash deploy.sh
+  
 
 
 
