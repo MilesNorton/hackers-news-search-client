@@ -1,6 +1,5 @@
 # grab lightweight node
-FROM node
-# :10.15.1-alpine
+FROM node:10.15.1-alpine
 # set working directory
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
@@ -24,8 +23,7 @@ RUN npm run rimraf src tsconfig.json node_modules webpack.config.js server.js
 RUN npm install --production --silent
 RUN rm package-lock.json && rm package.json
 
-FROM node
-# :10.15.1-alpine
+FROM node:10.15.1-alpine
 # set working directory
 WORKDIR /usr/app
 # copy in our node_modules and our transpiled javascript

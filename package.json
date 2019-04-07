@@ -4,8 +4,8 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "./node_modules/.bin/jest",
-    "build": "./node_modules/.bin/webpack",
+    "test": "jest",
+    "build": "webpack --config webpack.config.js",
     "start": "npm run build && node server.js",
     "docker-local-build": "docker build -t  abx-exercise .",
     "docker-local-run": "docker run -t -d -p 80:80 abx-exercise",
