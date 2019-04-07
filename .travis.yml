@@ -1,20 +1,17 @@
 dist: xenial
 language: node_js
-node_js:
-  - '6'
-  - '8'
-  - '10'
-  - '11'
 cache:
   directories:
     - "node_modules"  
 jobs:
-  include:
-    - stage: "Install"
-      script: npm install
+  include:   
     - stage: "Compile"
+      node_js: 
+        '11'
       script: npm run build
-    - stage: test
+    - stage: "Test"
+      node_js: 
+        '11'
       script: npm run test
 # script:
 #   - npm run test
