@@ -6,22 +6,22 @@ env:
   global:
   - DOCKER_REPO=hackers-news-search-client/docker_image
   - EB_REGION="ap-southeast-2"
-  - secure: travisEncryptedAWS_ACCOUNT_ID
-  - secure: travisEncryptedAWS_ACCESS_KEY_ID
-  - secure: travisEncryptedAWS_SECRET_ACCESS_KEY
+  # - secure: travis Encrypted AWS_ACCOUNT_ID
+  # - secure: travis Encrypted AWS_ACCESS_KEY_ID
+  # - secure: travis Encrypted AWS_SECRET_ACCESS_KEY
 cache:
   directories:
     - "node_modules"
 jobs:  
   include:   
-    - stage: "Compile"
-      node_js: 
-        '11'
-      script: npm run build
-    - stage: "Test"
-      node_js: 
-        '11'
-      script: npm run test
+    # - stage: "Compile"
+    #   node_js: 
+    #     '11'
+    #   script: npm run build
+    # - stage: "Test"
+    #   node_js: 
+    #     '11'
+    #   script: npm run test
     - stage: "Deploy To ECR"
       node_js:
         '11'
