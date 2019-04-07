@@ -26,7 +26,7 @@ jobs:
       node_js:
         '11'
       script: >-
-        npm install aws-cli &&
+        npm install -g aws-cli &&
         export PATH=$PATH:$HOME/.local/bin &&
         npm run docker-local-build-travis &&
         bash deploy.sh
