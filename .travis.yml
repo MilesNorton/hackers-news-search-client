@@ -1,5 +1,9 @@
 dist: xenial
-language: node_js
+language: python
+python:
+  - "2.7"
+node_js:
+  '11'
 services:
   docker
 env:
@@ -26,7 +30,7 @@ jobs:
       node_js:
         '11'
       script: >-
-        npm install -g aws-cli &&
+        pip install awscli &&
         export PATH=$PATH:$HOME/.local/bin &&
         npm run docker-local-build-travis &&
         bash deploy.sh
