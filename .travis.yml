@@ -1,9 +1,18 @@
 dist: xenial
 language: node_js
+services:
+  docker
+env:
+  global:
+  - DOCKER_REPO=hackers-news-search-client/docker_image
+  - EB_REGION="ap-southeast-2"
+  - secure: travisEncryptedAWS_ACCOUNT_ID
+  - secure: travisEncryptedAWS_ACCESS_KEY_ID
+  - secure: travisEncryptedAWS_SECRET_ACCESS_KEY
 cache:
   directories:
-    - "node_modules"  
-jobs:
+    - "node_modules"
+jobs:  
   include:   
     - stage: "Compile"
       node_js: 
@@ -13,6 +22,19 @@ jobs:
       node_js: 
         '11'
       script: npm run test
+    - stage: "Deploy To ECR"
+      node_js:
+        '11'
+    - script: npm install awscli
+    - script: export PATH=$PATH:$HOME/.local/bin
+    - script: npm run docker-local-build-travis
+    - script: bash deploy.sh
+      on:
+          branch: master
+
+
+
+
 # script:
 #   - npm run test
 
