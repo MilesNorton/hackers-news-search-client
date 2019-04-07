@@ -1,12 +1,10 @@
 dist: xenial
-matrix:
-  include:
-  - language: python # need python for aws
-    python:
-      - "2.7"
-  - language: node_js # need python for aws
-    node_js:
-      '11'
+language: python # need python for aws
+python:
+  - "2.7"
+# node_js:
+#   '11'
+before_install: "nvm install 11"
 services:
   docker
 env:
