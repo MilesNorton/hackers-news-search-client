@@ -6,8 +6,9 @@ cache:
     - "node_modules"  
 jobs:
   include:
-    - stage: compile
-      script: npm run build
+    - stage: "Compile"
+    - script: npm run install
+    - script: npm run build
     - stage: test
       script: npm run test
 script:
