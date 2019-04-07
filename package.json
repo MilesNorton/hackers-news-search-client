@@ -4,7 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/.bin/jest",
     "build": "./node_modules/.bin/webpack",
     "start": "npm run build && node server.js",
     "docker-local-build": "docker build -t  abx-exercise .",
