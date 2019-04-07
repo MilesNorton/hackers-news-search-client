@@ -1,5 +1,5 @@
 dist: xenial
-language: python
+language: python # need python for aws
 python:
   - "2.7"
 node_js:
@@ -18,14 +18,14 @@ cache:
     - "node_modules"
 jobs:  
   include:   
-    # - stage: "Compile"
-    #   node_js: 
-    #     '11'
-    #   script: npm run build
-    # - stage: "Test"
-    #   node_js: 
-    #     '11'
-    #   script: npm run test
+    - stage: "Test"
+      node_js: 
+        '11'
+      script: npm run test  
+    - stage: "Build"
+      node_js: 
+        '11'
+      script: npm run build
     - stage: "Deploy To ECR"
       node_js:
         '11'
