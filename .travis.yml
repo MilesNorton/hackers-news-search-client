@@ -4,7 +4,9 @@ python:
   - "2.7"
 # node_js:
 #   '11'
-before_install: "nvm install 11"
+before_install: >- 
+  nvm install 11 &&
+  npm install
 services:
   docker
 env:
@@ -23,7 +25,6 @@ jobs:
     - stage: "Test"
       node_js: 
         '11'
-      
       script: npm run test  
     - stage: "Build"
       node_js: 
