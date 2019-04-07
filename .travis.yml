@@ -1,6 +1,6 @@
 language: nodejs
 node_js:
-  - "11"
+  - "7"
 cache:
   directories:
     - "node_modules"  
