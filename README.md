@@ -40,12 +40,12 @@ The entry point for this is in the .travis.yml file.
 
 1. We install python and nodejs (through nvm).
 2. We specify the env variables we need. Please note our AWS security keys are env files but are stored on Travis as it is hidden and encrypted.
-   2.1. DOCKER_REPO --> this is created in AWS ECR, it is the repository name you chose.
-   2.2. EB_REGION --> this is the region to deploy to. This will be changed in the future as we use more than 1 region.
+   - DOCKER_REPO --> this is created in AWS ECR, it is the repository name you chose.
+   - EB_REGION --> this is the region to deploy to. This will be changed in the future as we use more than 1 region.
 3. Cache the node_modules so it builds faster, travis will update modules that have changed.
 4. Run the test job first.
 5. Run the Deploy to ECR job
-   5.1. Run script to instal the awscli through python.
-   5.2. add path variables
-   5.3. Run docker-local-build-travis from the packages, this will give the image the repo name.
-   5.4. Run deploy.sh --> look at this file for comments
+   - Run script to instal the awscli through python.
+   - add path variables
+   - Run docker-local-build-travis from the packages, this will give the image the repo name.
+   - Run deploy.sh --> look at this file for comments
