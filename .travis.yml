@@ -2,8 +2,6 @@ dist: xenial
 language: python # need python for aws
 python:
   - "2.7"
-# node_js:
-#   '11'
 before_install: >- 
   nvm install 11 &&
   npm install
@@ -13,23 +11,18 @@ env:
   global:
   - DOCKER_REPO=hackers-news-search-client/docker_image
   - EB_REGION="ap-southeast-2"
-  # - secure: travis Encrypted AWS_ACCOUNT_ID
+  # - secure: travis Encrypted AWS_ACCOUNT_ID # these are stored in travis
   # - secure: travis Encrypted AWS_ACCESS_KEY_ID
   # - secure: travis Encrypted AWS_SECRET_ACCESS_KEY
 cache:
   directories:
     - "node_modules"
-pre_install:
 jobs: 
   include:   
     - stage: "Test"
       node_js: 
         '11'
       script: npm run test  
-    - stage: "Build"
-      node_js: 
-        '11'
-      script: npm run build
     - stage: "Deploy To ECR"
       node_js:
         '11'
@@ -38,34 +31,3 @@ jobs:
         export PATH=$PATH:$HOME/.local/bin &&
         npm run docker-local-build-travis &&
         bash deploy.sh
-    
-
-
-
-
-# script:
-#   - npm run test
-
-# after_success:
-  # - npm pack
-
-# deploy:
-  # - provider: pages
-  #   skip_cleanup: true
-  #   local_dir: docs/
-  #   github_token: $GITHUB_TOKEN
-  #   on:
-  #     tags: true
-  # - provider: releases
-  #   api_key: $GITHUB_TOKEN
-  #   file_glob: true
-  #   file: "{YOURLIB}-*.tgz"
-  #   skip_cleanup: true
-  #   on:
-  #     tags: true
-  # - provider: npm
-  #   skip_cleanup: true
-  #   email: "youremail@example.com"
-  #   api_key: $NPM_TOKEN
-  #   on:
-  #     tags: true
