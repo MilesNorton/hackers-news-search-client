@@ -23,11 +23,13 @@ jobs:
       node_js: 
         '11'
       script: npm run test  
-    - stage: "Deploy To ECR"
-      node_js:
-        '11'
-      script: >-
-        pip install awscli &&
-        export PATH=$PATH:$HOME/.local/bin &&
-        npm run docker-local-build-travis &&
-        bash deploy.sh
+    # - stage: "Deploy To ECR"
+    #   node_js:
+    #     '11'
+    #   script: >-
+    #     pip install awscli &&
+    #     export PATH=$PATH:$HOME/.local/bin &&
+    #     npm run docker-local-build-travis &&
+    #     bash deploy.sh
+after_success:
+- bin/docker_push.sh
