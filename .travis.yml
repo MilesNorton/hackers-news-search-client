@@ -32,4 +32,4 @@ jobs:
     #     npm run docker-local-build-travis &&
     #     bash deploy.sh
 after_success:
-- bin/docker_push.sh
+- ./docker_push.sh
