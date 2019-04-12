@@ -21,10 +21,10 @@ cache:
 
 jobs: 
   include:   
-    - stage: "Test"
-      node_js: 
-        '11'
-      script: npm run test  
+    # - stage: "Test"
+    #   node_js: 
+    #     '11'
+    #   script: npm run test  
     - stage: "Deploy To ECR"
       node_js:
         '11'
@@ -32,6 +32,8 @@ jobs:
         pip install awscli &&
         export PATH=$PATH:$HOME/.local/bin &&
         npm run docker-local-build-travis &&
-        bash deploy.sh
+        bash deploy.sh &&
+        bash ecs-deploy -c $TASK_DEFINITION -n $SERVICE -i $REGISTRY_URL:$TRAVIS_BRANCH
+
 
     # - ./docker_push.sh
