@@ -45,7 +45,7 @@ if [ "$TRAVIS_BRANCH" == "master" ]; then
 echo "Deploying $TRAVIS_BRANCH (travis-branch)  on $TASK_DEFINITION (task-definition).  "
 echo "service: $SERVICE, registry url: $REGISTRY_URL"
 # ecs-deploy -c $TASK_DEFINITION -n $SERVICE -i $REGISTRY_URL:$TRAVIS_BRANCH
-ecs-deploy -c $TASK_DEFINITION -n $SERVICE -i $TARGET_IMAGE_VERSIONED
+ecs-deploy -c $SERVICE -d $TASK_DEFINITION -i $TARGET_IMAGE_VERSIONED
 
 else
 echo "Skipping deploy because it's not an allowed branch"
