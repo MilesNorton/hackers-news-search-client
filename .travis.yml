@@ -6,8 +6,7 @@ before_install: >-
   nvm install 11 &&
   npm install &&
   curl https://raw.githubusercontent.com/silinternational/ecs-deploy/master/ecs-deploy | sudo tee /usr/bin/ecs-deploy &&
-  sudo chmod +x /usr/bin/ecs-deploy &&
-  ecs-deploy --version
+  sudo chmod +x /usr/bin/ecs-deploy 
 services:
   docker
 env:
@@ -35,7 +34,7 @@ jobs:
         export PATH=$PATH:$HOME/.local/bin &&
         npm run docker-local-build-travis &&
         bash deploy.sh &&
-        bash ecs-deploy -c $TASK_DEFINITION -n $SERVICE -i $REGISTRY_URL:$TRAVIS_BRANCH
+        ecs-deploy -c $TASK_DEFINITION -n $SERVICE -i $REGISTRY_URL:$TRAVIS_BRANCH
 
 
     # - ./docker_push.sh
