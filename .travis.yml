@@ -33,8 +33,7 @@ jobs:
         pip install awscli &&
         export PATH=$PATH:$HOME/.local/bin &&
         npm run docker-local-build-travis &&
-        bash deploy.sh &&
-        ecs-deploy -c $TASK_DEFINITION -n $SERVICE -i $REGISTRY_URL:$TRAVIS_BRANCH
+        bash deploy.sh
 
 
     # - ./docker_push.sh
