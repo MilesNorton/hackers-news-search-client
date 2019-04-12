@@ -5,7 +5,8 @@ python:
 before_install: >- 
   nvm install 11 &&
   npm install &&
-  chmod +x docker_push.sh # give permissions to access it
+  curl https://raw.githubusercontent.com/silinternational/ecs-deploy/master/ecs-deploy | sudo tee /usr/bin/ecs-deploy &&
+  sudo chmod +x /usr/bin/ecs-deploy
 services:
   docker
 env:
